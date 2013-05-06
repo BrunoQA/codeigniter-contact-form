@@ -23,14 +23,19 @@
 class Contact extends CI_Controller {
 
 
-	protected $formView= 'contact';
-	protected $successView= 'contact_success';
-	protected $headerView = 'template/header'; //null to disable
-	protected $footerView = 'template/footer'; //null to disable
-	protected $sendEmailTo = 'sendto@example.com';
-	protected $subjectLine = "Contact form response";
-	public $data = array(); // used for the views
+	// settings
+	protected 	$sendEmailTo 	= 	'sendto@example.com';
+	protected	$subjectLine 	= 	""; // actually set on line 39.
 	
+	// views
+	protected 	$formView		= 	'contact';
+	protected	$successView	= 	'contact_success';
+	protected 	$headerView 	= 	'template/header'; //null to disable
+	protected 	$footerView 	= 	'template/footer'; //null to disable
+
+	// other
+	public 		$data 			= 	array(); // used for the views
+
 
 	public function index() {
 
@@ -42,12 +47,14 @@ class Contact extends CI_Controller {
 		$this->form_validation->set_rules('message', 'Message', 'trim|required|xss_clean');
 
 		if($this->form_validation->run() == FALSE) {
+			// show the form
 			
 			if ($this->headerView) { $this->load->view($this->headerView,$this->data); }
 			$this->load->view($this->formView,$this->data);
 			if ($this->footerView) { $this->load->view($this->footerView,$this->data); }
 
 		} else {
+			// success! email it, assume it sent, then show contact success view.
 			
 			$this->load->library('email');
 			$this->email->from($this->input->post('email'), $this->input->post('name'));
@@ -61,10 +68,5 @@ class Contact extends CI_Controller {
 			if ($this->footerView) { $this->load->view($this->footerView,$this->data); }
 
 		}
-
-
-
 	}
-
-
 }

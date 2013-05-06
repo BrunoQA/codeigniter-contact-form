@@ -20,3 +20,6 @@ Basic contact form controller and views (contact form and success message) for C
 	work out of the box. 
 
 
+	$this->data is used for any data sent to the views.
+ 	It isn't used here, but I tend to use that pattern
+	with my template files so just included it here.
