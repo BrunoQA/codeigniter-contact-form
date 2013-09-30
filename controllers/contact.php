@@ -88,7 +88,7 @@ class Contact extends CI_Controller {
 
 
 	// the callback for checking the spam protection. Only one question/one answer, very basic.
-	protected function spam_protection($str)
+	public function spam_protection($str)
 	{
 		// we will assume the user is lazy with their caps lock
 		if (strtolower(trim($str)) == strtolower(trim($this->spam_answer)))
