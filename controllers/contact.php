@@ -35,7 +35,7 @@ class Contact extends CI_Controller {
 
 	// spam protection
 	protected	$spam_protection	= 	true; // true or false
-	protected 	$spam_question		=	'What color is the sky';
+	protected 	$spam_question		=	'What color is a blue snake';
 	protected	$spam_answer		= 	'blue';
 
 	// other
