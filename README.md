@@ -4,6 +4,26 @@ codeigniter-contact-form
 Basic contact form controller and views (contact form and success message) for CodeIgniter. 
 
 
+	Editing the settings:
+	(They should be in a config file, but for
+	a basic part of your site i've included
+	it in controllers/contact.php)
+
+	Important settings:
+
+	$sendEmailTo: Where to send the email
+
+	$headerView: set to null if you don't want
+		to show a header. If anything is set
+		it will load that view before the
+		content
+	
+	$footerView: Same as $headerView but the footer
+
+	$spam_question / $spam_answer: Set a basic
+		question to avoid bots. E.g. 
+		'what colour is the sky' & 'blue'
+	
 
 	Usage:
 	Edit the protected variables at start of class.
