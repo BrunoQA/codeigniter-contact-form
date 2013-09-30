@@ -24,20 +24,30 @@ class Contact extends CI_Controller {
 
 
 	// settings
-	protected 	$sendEmailTo 	= 	'sendto@example.com';
-	protected	$subjectLine 	= 	""; // actually set on line 39.
+	protected 	$sendEmailTo 		= 	'sendto@example.com';
+	protected	$subjectLine 		= 	""; // actually set on line 39.
 	
 	// views
-	protected 	$formView		= 	'contact';
-	protected	$successView	= 	'contact_success';
-	protected 	$headerView 	= 	'template/header'; //null to disable
-	protected 	$footerView 	= 	'template/footer'; //null to disable
+	protected 	$formView			= 	'contact';
+	protected	$successView		= 	'contact_success';
+	protected 	$headerView 		= 	'template/header'; //null to disable
+	protected 	$footerView 		= 	'template/footer'; //null to disable
+
+	// spam protection
+	protected	$spam_protection	= 	true; // true or false
+	protected 	$spam_question		=	'What color is the sky';
+	protected	$spam_answer		= 	'blue';
 
 	// other
-	public 		$data 			= 	array(); // used for the views
+	public 		$data 				= 	array(); // used for the views
+
+
 
 
 	public function index() {
+
+		$this->data['show_spam_protection'] = $this->spam_protection; // used in the view
+		$this->data['spam_question'] = $this->spam_question; // used in the view
 
 		$this->load->library('form_validation');
 		$this->load->helper('url');
@@ -45,6 +55,10 @@ class Contact extends CI_Controller {
 		$this->form_validation->set_rules('name', 'Your name', 'trim|required');
 		$this->form_validation->set_rules('email', 'Your Email', 'trim|required|valid_email');
 		$this->form_validation->set_rules('message', 'Message', 'trim|required|xss_clean');
+
+		if ($this->spam_protection) {
+			$this->form_validation->set_rules('spam_protection', 'Spam Protection', 'callback_spam_protection');
+		}
 
 		if($this->form_validation->run() == FALSE) {
 			// show the form
@@ -69,4 +83,27 @@ class Contact extends CI_Controller {
 
 		}
 	}
+
+
+
+
+	// the callback for checking the spam protection. Only one question/one answer, very basic.
+	public function spam_protection($str)
+	{
+		// we will assume the user is lazy with their caps lock
+		if (strtolower(trim($str)) == strtolower(trim($this->spam_answer)))
+		{
+			return TRUE;
+		}
+		else
+		{
+			$this->form_validation->set_message('spam_protection', 'The %s field did not match the correct answer');
+			return FALSE;
+		}
+	}
+
+
+
+
 }
+

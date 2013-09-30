@@ -23,7 +23,17 @@
 		<td>".form_label('Message: ', 'message'). "</td>
 		<td><textarea name='message'>" . set_value("message") . "</textarea></td>
 		</tr>";
-	
+
+
+	if ($show_spam_protection) {
+
+	echo "<tr>
+		<td>" . form_label('Spam protection - : ' . $spam_question, 'spam_protection'). "</td>
+		<td>" . form_input('spam_protection', set_value('spam_protection')) . "</td>
+		</tr>";
+
+	}
+
 	echo "<tr>
 		<td>".form_submit('submit', 'Submit Message') . "</td>
 		</tr>";
@@ -34,4 +44,5 @@
 <?
 	echo form_close();
 ?>
+
 
