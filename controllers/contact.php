@@ -1,8 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-
 /*
-
 	Usage:
 	Edit the protected variables at start of class.
 	If headerView/footerView is null it won't 
@@ -16,8 +14,6 @@
 
 	Just go to site_url("contact") and it should
 	work out of the box. 
-
-
 
  */
 class Contact extends CI_Controller {
@@ -77,6 +73,8 @@ class Contact extends CI_Controller {
 			$this->email->message($this->input->post('message'));
 			$this->email->send();
 
+			// load the view
+			// if $this->headerView/footerView is set it will load their views
 			if ($this->headerView) { $this->load->view($this->headerView,$this->data); }
 			$this->load->view($this->successView,$this->data);
 			if ($this->footerView) { $this->load->view($this->footerView,$this->data); }
@@ -84,21 +82,16 @@ class Contact extends CI_Controller {
 		}
 	}
 
-
-
-
 	// the callback for checking the spam protection. Only one question/one answer, very basic.
 	public function spam_protection($str)
 	{
 		// we will assume the user is lazy with their caps lock
-		if (strtolower(trim($str)) == strtolower(trim($this->spam_answer)))
-		{
-			return TRUE;
+		if (strtolower(trim($str)) == strtolower(trim($this->spam_answer))) {
+			return true;
 		}
-		else
-		{
+		else {
 			$this->form_validation->set_message('spam_protection', 'The %s field did not match the correct answer');
-			return FALSE;
+			return false;
 		}
 	}
 
