@@ -1,4 +1,22 @@
-codeigniter-contact-form
+codeigniter-contact-form - Simple and Easy Contact Form Example
+===============================================================
+
+
+What Is This CodeIgniter Contact Form?
+======================================
+
+This is a simple to drop in contact form (with just a controller
+and a few view files).
+
+It is easy to import into your Code Igniter setup, and includes
+some (very basic) CAPTCHA spam protection.
+
+There is no fancy javascript or any dependencies - just plain PHP / CI. 
+Just a simple CodeIgniter contact form.
+
+Enjoy.
+
+Help/Readme/Instructions
 ========================
 
 Basic contact form controller and views (contact form and success message) for CodeIgniter. 
