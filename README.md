@@ -41,7 +41,10 @@ Basic contact form controller and views (contact form and success message) for C
 	Just go to site_url("contact") (i.e. http://domain.com/index.php/contact
 	 and it should	work out of the box. 
 
-
 	$this->data is used for any data sent to the views.
  	It isn't used here, but I tend to use that pattern
 	with my template files so just included it here.
+
+
+Message me (via http://ashleybaker.co.uk/) if you
+have any questions or want help setting it up.
