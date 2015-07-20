@@ -64,5 +64,5 @@ Basic contact form controller and views (contact form and success message) for C
 	with my template files so just included it here.
 
 
-Message me (via http://ashleybaker.co.uk/) if you
+Message me  if you
 have any questions or want help setting it up.

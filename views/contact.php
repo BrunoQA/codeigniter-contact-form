@@ -48,7 +48,8 @@
 		// or... better yet... hire me for PHP (esp. CodeIgniter related) work!
 		// I am UK/EU Based but work remotely.
 		// Also message me if you just need a hand implementing this.
+
+    //github.com/abkr
 ?>
-<p style='margin-top:25px;font-size:10px;'><a href='http://ashleybaker.co.uk/'>Contact Form by Ashley Baker</a></p>
 
 
